@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<head>
+    <title>IGNORED</title>
+</head>
+
+<body>
+<ui:composition template="/templates/masterTemplate.xhtml">
+    <ui:define name="windowTitle">
+        #{msg.siteTitle}
+    </ui:define>
+
+
+    <ui:define name="content">
+        <div id="content">
+            #{msg.titleFormList}
+            <h:form>
+                <h:dataTable value="#{personBean.people}" var="record" border="1">
+                    <h:column>
+                        <!-- kolumna zawiera nazwiska osob -->
+                        <f:facet name="header">
+                            <h:outputText value="#{msg.Lastname}"/>
+<!--                            <h:outputText>#{msg.Lastname}</h:outputText>-->
+                        </f:facet>
+                        <h:outputText value="#{record.lname}" />
+                    </h:column>
+                    <h:column>
+                        <!-- kolumna zawiera imiona osob -->
+                        <f:facet name="header">
+                            <h:outputText>#{msg.Firstname}</h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{record.fname}" />
+                    </h:column>
+                    <h:column>
+                        <!-- kolumna zawiera e-mail osob -->
+                        <f:facet name="header">
+                            <h:outputText>#{msg.Email}</h:outputText>
+                        </f:facet>
+                        <h:outputText value="#{record.email}" />
+                    </h:column>
+
+                </h:dataTable>
+            </h:form>
+        </div>
+    </ui:define>
+
+</ui:composition>
+
+
+</body>
+
+
+</html>
